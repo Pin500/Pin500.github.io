@@ -1,1 +1,488 @@
-<html>hello</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panhapin Theang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text: #3f3f3f;
+    --heading: #000;
+    --link: #2a7ae2;
+    --link-hover: #1756a9;
+    --border: #e8e8e8;
+    --muted: #828282;
+    --bg: #fff;
+    --accent-bg: #f8f9fb;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'PT Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  a { color: var(--link); text-decoration: none; }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  /* Top navigation */
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .masthead-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .site-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: -0.01em;
+  }
+
+  .site-nav { display: flex; gap: 28px; }
+
+  .site-nav a {
+    color: #444;
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.15s;
+  }
+
+  .site-nav a:hover { color: #000; text-decoration: none; }
+
+  .page-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 50px;
+  }
+
+  .sidebar { font-size: 14px; }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background-image: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sidebar-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+  }
+
+  .sidebar-role {
+    font-size: 13px;
+    color: var(--link);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-bio {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .sidebar-list { list-style: none; padding: 0; }
+
+  .sidebar-list li {
+    padding: 4px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #444;
+  }
+
+  .sidebar-list li a { color: #444; }
+  .sidebar-list li a:hover { color: var(--link); text-decoration: none; }
+
+  .sidebar-list .icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: #777;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-section {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .sidebar-section h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .sidebar-section p {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 4px;
+  }
+
+  /* Main content */
+  .content h1 {
+    font-family: 'PT Serif', Georgia, serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.3;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .content h2 {
+    font-family: 'PT Serif', Georgia, serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--heading);
+    margin-top: 48px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+
+  .content h3 {
+    font-family: 'PT Serif', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--heading);
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+
+  .content p { margin-bottom: 16px; }
+  .content ul, .content ol { margin-bottom: 16px; padding-left: 24px; }
+  .content li { margin-bottom: 8px; }
+
+  /* Timeline cards */
+  .timeline-card {
+    border-left: 2px solid var(--border);
+    padding: 0 0 24px 18px;
+    margin-left: 6px;
+    position: relative;
+  }
+  .timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--link);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--border);
+  }
+  .timeline-card .when {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .timeline-card h3 { margin-top: 2px; }
+  .timeline-card .where {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .timeline-card p { font-size: 15px; margin-bottom: 0; }
+
+  /* Publications */
+  .pub-list { list-style: none; padding: 0; }
+  .pub-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-list li:last-child { border-bottom: none; }
+  .pub-title { font-weight: 700; color: #222; }
+  .pub-meta { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .pub-venue { font-style: italic; }
+  .pub-tag {
+    display: inline-block;
+    background: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-right: 8px;
+    color: #666;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 20px;
+    margin-top: 40px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (max-width: 800px) {
+    .page-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .sidebar { text-align: center; }
+    .avatar { margin: 0 auto 16px; }
+    .sidebar-list { display: inline-block; text-align: left; }
+    .site-nav { gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .site-nav a { font-size: 14px; }
+    .masthead-inner { height: auto; padding: 14px 20px; flex-direction: column; gap: 12px; }
+    .content h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="site-title">Panhapin Theang</div>
+    <nav class="site-nav">
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <aside class="sidebar">
+    <div class="avatar">
+      <!-- Replace 'profile-photo.jpg' with your actual image filename -->
+      <img src="profile-photo.jpg" alt="Panhapin Theang" onerror="this.src='https://via.placeholder.com/200?text=PT'">
+    </div>
+    <div class="sidebar-name">Panhapin Theang</div>
+    <div class="sidebar-role">Student Researcher</div>
+    <div class="sidebar-bio">Research in sustainable corporate behavior, climate finance, and risk management, Université Paris Cité.</div>
+
+    <ul class="sidebar-list">
+      <li>
+        <span class="icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        Paris, France
+      </li>
+      <li>
+        <span class="icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+        </span>
+        Université Paris Cité
+      </li>
+      <li>
+        <span class="icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+        </span>
+        <a href="#contact">Email Contact</a>
+      </li>
+      <li>
+        <span class="icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 00-.112.437 8.365 8.365 0 00-.078.53 9 9 0 00-.05.727 17.59 17.59 0 00-.013.94c0 .375.005.7.013.973.014.273.034.5.05.683.018.184.044.336.078.453.038.118.075.215.112.295.243.748.65 1.31 1.213 1.687.565.376 1.255.564 2.073.564.818 0 1.508-.188 2.073-.564.563-.377.97-.939 1.213-1.687a3.6 3.6 0 00.112-.295 7.16 7.16 0 00.075-.453 8.18 8.18 0 00.05-.683c.013-.273.018-.598.018-.974 0-.376-.005-.69-.018-.94a8.365 8.365 0 00-.05-.727 7.169 7.169 0 00-.075-.53 5.82 5.82 0 00-.112-.437c-.243-.744-.65-1.303-1.213-1.68C21.094.19 20.404 0 19.586 0zM7.232 0C3.668 0 .68 2.452.68 6.46v8.06c0 4.064 3.018 6.502 6.572 6.502 2.092 0 3.872-.937 4.793-2.404 0-2.5.005-4.18.005-6.41h-4.732v3.18h1.682c-.013.83-.013 1.066-.013 1.215-.182.624-.937 1.622-2.61 1.622-2.218 0-3.213-1.875-3.213-3.745v-7.85c0-1.97 1.085-3.844 3.176-3.844 2.092 0 3.176 1.875 3.176 3.844v.255h3.018V6.46c-.014-4.067-2.952-6.46-6.252-6.46h-.05zm12.354 1.945c.55 0 .937.187 1.187.55.243.376.376 1.025.376 2.025 0 1-.133 1.65-.376 2.013-.25.376-.638.564-1.187.564-.55 0-.938-.188-1.188-.564-.243-.363-.375-1.013-.375-2.013 0-1 .132-1.65.375-2.025.25-.363.638-.55 1.188-.55z"/></svg>
+        </span>
+        <a href="https://www.researchgate.net/profile/Panhapin-Theang-2" target="_blank" rel="noopener">ResearchGate</a>
+      </li>
+      <li>
+        <span class="icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </span>
+        <a href="https://fr.linkedin.com/in/panhapin-theang-90972b32a" target="_blank" rel="noopener">LinkedIn</a>
+      </li>
+    </ul>
+
+    <div class="sidebar-section">
+      <h4>Research Fields</h4>
+      <p>Climate finance</p>
+      <p>Risk &amp; insurance</p>
+      <p>Sustainable corporate finance</p>
+      <p>Causal inference · ESG</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Methods</h4>
+      <p>Quasi-experimental design</p>
+      <p>Causal inference</p>
+      <p>Machine learning</p>
+      <p>Panel econometrics</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Languages</h4>
+      <p>Khmer · English · Chinese · French</p>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1>About me!</h1>
+
+    <p>I am a graduate student in <strong>Analysis and Political Economy: Sustainability, Corporations and Policies</strong> at <strong>Université Paris Cité</strong>, where my thesis sits at the intersection of climate finance and risk management. Using a quasi-experimental design, I examine how the insurance sector's withdrawal from carbon-intensive activities influences corporate environmental behavior and firms' transition strategies.</p>
+
+    <p>This work continues a research program that began during my MPhil at the <strong>University of Science and Technology of China (USTC)</strong>, where I studied corporate sustainability and ESG trajectories using predictive machine learning. The shift from prediction to causal inference in my current thesis reflects what I want to pursue in doctoral research: combining theoretical reflection with rigorous empirical analysis to understand how financial institutions and market constraints shape real corporate decisions.</p>
+
+    <h2 id="research">Research Interests</h2>
+    <p>My research program is organized around a central question — how financial-sector frictions and constraints translate into changes in real corporate behavior, particularly in the context of the climate transition. Within this, I work on:</p>
+    <ul>
+      <li><strong>Climate finance and corporate transition</strong> — how insurance underwriting, capital availability, and investor pressure affect firms' carbon intensity and environmental strategies.</li>
+      <li><strong>Risk management and financial regulation</strong> — regulatory frameworks, ESG risk, and the role of financial institutions in steering capital toward sustainable activities.</li>
+      <li><strong>Empirical methods in finance</strong> — quasi-experimental and causal inference designs applied to firm-level data, complemented by machine-learning approaches to ESG trajectories.</li>
+      <li><strong>Sustainability and policy evaluation</strong> — corporate sustainability benchmarks, energy transition pathways, and the link between firm behavior and broader policy outcomes.</li>
+    </ul>
+
+    <h3>Current Thesis</h3>
+    <p><em>Corporate Environmental Behavior in the Insurance Sector using Causal Inference.</em></p>
+
+    <h2 id="experience">Research Experiences</h2>
+
+    <div class="timeline-card">
+      <div class="when">2025 — Present</div>
+      <h3>Research Intern</h3>
+      <div class="where">Laboratoire Dynamiques Sociales et Recomposition des Espaces (LADYSS) · Paris, France</div>
+      <p>Strengthening the design of research frameworks, the management of empirical projects, and the presentation of academic findings within a social-science laboratory environment.</p>
+    </div>
+
+    <div class="timeline-card">
+      <div class="when">2022-2025</div>
+      <h3>Research Intern</h3>
+      <div class="where">Strategic and Risk Management Research Center · USTC, Hefei, China</div>
+      <p>Worked with regulatory frameworks, ESG risk, firm-level data, and sustainability benchmarks, developing the empirical foundation for current work on financial-sector influences on corporate behavior.</p>
+    </div>
+
+    <div class="timeline-card">
+      <div class="when">2022</div>
+      <h3>Research Intern</h3>
+      <div class="where">Novosibirsk State University · Novosibirsk, Russia</div>
+      <p>Conducted research on structural policy evaluation and energy management, an early experience that shaped my interest in policy-relevant economic questions.</p>
+    </div>
+
+    <h2 id="education">Education</h2>
+
+    <div class="timeline-card">
+      <div class="when">2025 — 2026</div>
+      <h3>Master 2 — Analysis and Political Economy: Sustainability, Corporations and Policies</h3>
+      <div class="where">Université Paris Cité · Paris, France</div>
+      <p>Specialization in climate finance and risk management; quasi-experimental analysis of the insurance sector's withdrawal from carbon-intensive activities.</p>
+    </div>
+
+    <div class="timeline-card">
+      <div class="when">2022 — 2025</div>
+      <h3>MPhil — Public Affairs</h3>
+      <div class="where">University of Science and Technology of China (USTC) · Hefei, China</div>
+      <p>(Graduated with <strong>Honors</strong>, Outstanding Student.) </p> 
+        <p>Research focused on corporate sustainability and ESG trajectories using machine learning.</p>
+   </div>
+
+    <div class="timeline-card">
+      <div class="when">2017 — 2021</div>
+      <h3>BA — International Studies</h3>
+      <div class="where">Royal University of Phnom Penh (RUPP) · Phnom Penh, Cambodia</div>
+      <p>Undergraduate thesis on energy management and policy in Cambodia.</p>
+    </div>
+
+    <h2 id="publications">Publications &amp; Conference Papers</h2>
+    <p>My published work spans sustainability partnerships, disaster preparedness, renewable energy, and education. These projects anchor my finance-oriented work in rigorous literature review and empirical analysis.</p>
+
+    <ul class="pub-list">
+      <li>
+        <span class="pub-tag">Under Review</span>
+        <div class="pub-title">Cross-Sector Partnerships for Sustainability: Firm-NPO ESG Performance and Financial Outcomes</div>
+        <div class="pub-meta"><strong>Theang, P.</strong>, Wei, J., &amp; Jiang, R. (2025). <span class="pub-venue">Journal of Management and Governance, Springer</span></div>
+      </li>
+      <li>
+        <div class="pub-title">Bridging Gaps in Disaster Preparedness: Integrating Environmental Governance and Public Awareness in Cambodia's Disaster-Prone Regions</div>
+        <div class="pub-meta"><strong>Theang, P.</strong>, &amp; Thuon, N. — <span class="pub-venue">The International Conference on Environmental Pollution and Governance, Springer</span>, July 2025</div>
+      </li>
+      <li>
+        <div class="pub-title">Energy Transition in Cambodia: Pathways for Sustainable Development and International Cooperation</div>
+        <div class="pub-meta"><strong>Theang, P.</strong> — <span class="pub-venue">Annual Asianet Conference (ASIANET 2022)</span></div>
+      </li>
+      <li>
+        <div class="pub-title">The 20th February Event: Strategies for Education and Economic Development in Cambodia</div>
+        <div class="pub-meta"><strong>Theang, P.</strong>, &amp; Thuon, N. — <span class="pub-venue">IJARESM</span>, vol. 9, no. 12, pp. 893–898, December 2021</div>
+      </li>
+      <li>
+        <div class="pub-title">Transforming Cambodian Education: Full-Time Learning, Technology, and Language Integration for Public Schools</div>
+        <div class="pub-meta">Thuon, N., &amp; <strong>Theang, P.</strong> — October 2024</div>
+      </li>
+      <li>
+        <div class="pub-title">PALM-LAY: A Multi-script Cross-Regional Dataset for Layout Analysis of Palm Leaf Manuscripts</div>
+        <div class="pub-meta">Thuon, N., <strong>Theang, P.</strong>, Thuon, R., et al. — 2025</div>
+      </li>
+      <li>
+        <div class="pub-title">A Low-Intervention Dual-Loop Iterative Process for Efficient Dataset Expansion and Classification in Palm Leaf Manuscript Analysis</div>
+        <div class="pub-meta">Thuon, N., Du, J., <strong>Theang, P.</strong>, &amp; Thuon, R. — May 2025</div>
+      </li>
+    </ul>
+
+    <h2 id="awards">Honors &amp; Awards</h2>
+    <ul>
+      <li><strong>Master 2 Scholarship</strong>, Université Paris Cité (2025–2026).</li>
+      <li><strong>Outstanding Student Award &amp; Graduation with Honors</strong>, University of Science and Technology of China (2025).</li>
+      <li><strong>Chinese Government Scholarship (CSC)</strong>, Full scholarship for Master’s Degree at USTC (2022–2025).</li>
+    </ul>
+
+    <h2 id="contact">Contact</h2>
+    <p>I welcome conversations about doctoral opportunities, research collaborations in climate finance, and applied econometric work. The best way to reach me is through <a href="https://fr.linkedin.com/in/panhapin-theang-90972b32a" target="_blank" rel="noopener">LinkedIn</a> or <a href="https://www.researchgate.net/profile/Panhapin-Theang-2" target="_blank" rel="noopener">ResearchGate</a>.</p>
+  </main>
+
+</div>
+
+<footer>
+  © 2026 Panhapin Theang · Last updated May 2026
+</footer>
+
+</body>
+</html>
